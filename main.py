@@ -22,7 +22,7 @@ def get_name(message): #получаем фамилию
 def get_surname(message):
     global surname;
     surname = message.text;
-    bot.send_message(message.from_user.id, 'Сколько тебе лет?');
+    bot.send_message(message.from_user.id, 'Сколько тебе лет (цифрами, пожалуйста)?');
     bot.register_next_step_handler(message, get_age);
 
 def get_age(message):
@@ -31,7 +31,7 @@ def get_age(message):
         try:
              age = int(message.text) #проверяем, что возраст введен корректно
         except Exception:
-             bot.send_message(message.from_user.id, 'Цифрами, пожалуйста');
+            bot.send_message(message.from_user.id, 'Цифрами, пожалуйста');
         bot.send_message(message.from_user.id, 'Тебе '+str(age)+' лет, тебя зовут '+name+' '+surname+'?')
 
 from telebot import types
